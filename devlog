@@ -10,3 +10,9 @@ rails g scaffold palette label:string user_id:integer project_id:integer product
 rails g scaffold attribute_layer label:string palette_id:integer
 
 rails g scaffold attribute label:string attribute_layer_id:integer
+
+rails g scaffold comment_thread pin_x:integer pin_y:integer design_version_id:integer
+
+rails g scaffold comment user_id:integer comment_thread_id:integer text:text
+
+rails g scaffold design_version project_id:integer html:text comment_thread_count:integer
