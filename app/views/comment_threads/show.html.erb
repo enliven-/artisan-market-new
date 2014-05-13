@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pin x:</strong>
+  <%= @comment_thread.pin_x %>
+</p>
+
+<p>
+  <strong>Pin y:</strong>
+  <%= @comment_thread.pin_y %>
+</p>
+
+<p>
+  <strong>Design version:</strong>
+  <%= @comment_thread.design_version_id %>
+</p>
+
+<%= link_to 'Edit', edit_comment_thread_path(@comment_thread) %> |
+<%= link_to 'Back', comment_threads_path %>

@@ -1,0 +1,13 @@
+<%= simple_form_for(@comment_thread) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :pin_x %>
+    <%= f.input :pin_y %>
+    <%= f.input :design_version_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
