@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :name, presence: true
-  validates :role, presence: true
+  # validates :name, presence: true
+  # validates :role, presence: true
 
   scope     :artisan,   ->  { where(role: 0) }
   scope     :customer,  ->  { where(role: 1) }

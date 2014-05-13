@@ -1,5 +1,6 @@
 class DesignVersionsController < ApplicationController
   before_action :set_design_version, only: [:show, :edit, :update, :destroy]
+  before_action :set_project
 
   # GET /design_versions
   # GET /design_versions.json
@@ -28,6 +29,7 @@ class DesignVersionsController < ApplicationController
 
     respond_to do |format|
       if @design_version.save
+        # session[:design_version_id] = @design_version.id
         format.html { redirect_to @design_version, notice: 'Design version was successfully created.' }
         format.json { render action: 'show', status: :created, location: @design_version }
       else
@@ -63,6 +65,10 @@ class DesignVersionsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+    
     def set_design_version
       @design_version = DesignVersion.find(params[:id])
     end

@@ -15,6 +15,8 @@ class CommentThreadsController < ApplicationController
   # GET /comment_threads/new
   def new
     @comment_thread = CommentThread.new
+    @design_version_id  = session[:design_version_id]
+  
   end
 
   # GET /comment_threads/1/edit

@@ -1,21 +1,31 @@
 ArtisanMarket::Application.routes.draw do
-  resources :design_versions
 
-  resources :comments
+  root 'projects#index'
 
-  resources :comment_threads
+  devise_for :users
 
-  resources :attributes
+  resources :projects do
+    resources :design_versions
 
-  resources :attribute_layers
+    member do
+      get  :design
+    end
+  end
 
-  resources :palettes
+  resources :comment_threads do
+    resources :comments
+  end
+
+
+  resources :palettes do
+    resources :attribute_layers do
+      resources :attributes
+    end
+  end
 
   resources :product_categories
 
-  resources :projects
 
-  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,10 +1,11 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project,         only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!,  only: [:new,  :edit, :update, :create, :design]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   # GET /projects/1
@@ -24,7 +25,8 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
+    @project              = Project.new(project_params)
+    @project.artisan_id   = current_user.id
 
     respond_to do |format|
       if @project.save
@@ -60,6 +62,19 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # GET /projects/1/design
+  def design
+    @design_version_id  = lambda { 
+                            design_version = @project.design_versions.last
+                            design_version.nil? ? 0 : design_version.id
+                          }.call
+    @palette            = @project.palettes.first
+    @attribute_layers   = @palette.attribute_layers
+    
+    session[:design_version_id] = @design_version_id
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

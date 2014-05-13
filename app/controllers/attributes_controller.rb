@@ -1,10 +1,11 @@
 class AttributesController < ApplicationController
   before_action :set_attribute, only: [:show, :edit, :update, :destroy]
+  before_action :set_attribute_layer, only: [:index]
 
   # GET /attributes
   # GET /attributes.json
   def index
-    @attributes = Attribute.all
+    @attributes = @attribute_layer.palette_attributes
   end
 
   # GET /attributes/1
@@ -63,6 +64,10 @@ class AttributesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_attribute_layer
+      @attribute_layer = AttributeLayer.find(params[:attribute_layer_id])
+    end
+
     def set_attribute
       @attribute = Attribute.find(params[:id])
     end

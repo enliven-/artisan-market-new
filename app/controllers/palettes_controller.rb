@@ -24,7 +24,9 @@ class PalettesController < ApplicationController
   # POST /palettes
   # POST /palettes.json
   def create
-    @palette = Palette.new(palette_params)
+    @palette              = Palette.new(palette_params)
+    @palette.user_id      = current_user.id
+    # @palette.project_id   = session[:project].id
 
     respond_to do |format|
       if @palette.save
