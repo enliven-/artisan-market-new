@@ -5,31 +5,33 @@ class AttributeLayersController < ApplicationController
   # GET /attribute_layers
   # GET /attribute_layers.json
   def index
-    @attribute_layers = @palette.attribute_layers
+    @attribute_layers = @palette.attribute_layers.all
   end
 
   # GET /attribute_layers/1
   # GET /attribute_layers/1.json
   def show
+    # @attribute_layer = @palette.attribute_layers.find(attribute_layer_params[:id])
   end
 
   # GET /attribute_layers/new
   def new
-    @attribute_layer = AttributeLayer.new
+    @attribute_layer = @palette.attribute_layers.new
   end
 
   # GET /attribute_layers/1/edit
   def edit
+    # @attribute_layer = @palette.attribute_layers.find(attribute_layer_params[:id])
   end
 
   # POST /attribute_layers
   # POST /attribute_layers.json
   def create
-    @attribute_layer = AttributeLayer.new(attribute_layer_params)
+    @attribute_layer = @palette.attribute_layers.new(attribute_layer_params)
 
     respond_to do |format|
       if @attribute_layer.save
-        format.html { redirect_to @attribute_layer, notice: 'Attribute layer was successfully created.' }
+        format.html { redirect_to [@palette, @attribute_layer], notice: 'Attribute layer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @attribute_layer }
       else
         format.html { render action: 'new' }
@@ -41,9 +43,10 @@ class AttributeLayersController < ApplicationController
   # PATCH/PUT /attribute_layers/1
   # PATCH/PUT /attribute_layers/1.json
   def update
+    # @attribute_layer = @palette.attribute_layers.find(attribute_layer_params[:id])
     respond_to do |format|
       if @attribute_layer.update(attribute_layer_params)
-        format.html { redirect_to @attribute_layer, notice: 'Attribute layer was successfully updated.' }
+        format.html { redirect_to [@palette, @attribute_layer], notice: 'Attribute layer was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -55,9 +58,10 @@ class AttributeLayersController < ApplicationController
   # DELETE /attribute_layers/1
   # DELETE /attribute_layers/1.json
   def destroy
+    # @attribute_layer = @palette.attribute_layers.find(attribute_layer_params[:id])
     @attribute_layer.destroy
     respond_to do |format|
-      format.html { redirect_to attribute_layers_url }
+      format.html { redirect_to palette_attribute_layers_url(@palette) }
       format.json { head :no_content }
     end
   end

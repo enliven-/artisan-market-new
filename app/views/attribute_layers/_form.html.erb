@@ -1,9 +1,9 @@
-<%= simple_form_for(@attribute_layer) do |f| %>
+<%= simple_form_for([@palette, @attribute_layer]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :label %>
-    <%= f.input :palette_id %>
+    <%= f.collection_select(:palette_id, Palette.all, :id, :label) %>    
   </div>
 
   <div class="form-actions">

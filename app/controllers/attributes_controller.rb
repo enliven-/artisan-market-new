@@ -1,11 +1,13 @@
 class AttributesController < ApplicationController
   before_action :set_attribute, only: [:show, :edit, :update, :destroy]
-  before_action :set_attribute_layer, only: [:index]
+  before_action :set_palette
+  before_action :set_attribute_layer
+
 
   # GET /attributes
   # GET /attributes.json
   def index
-    @attributes = @attribute_layer.palette_attributes
+    @attributes = @attribute_layer.palette_attributes.all
   end
 
   # GET /attributes/1
@@ -15,7 +17,7 @@ class AttributesController < ApplicationController
 
   # GET /attributes/new
   def new
-    @attribute = Attribute.new
+    @attribute = @attribute_layer.palette_attributes.new
   end
 
   # GET /attributes/1/edit
@@ -25,11 +27,11 @@ class AttributesController < ApplicationController
   # POST /attributes
   # POST /attributes.json
   def create
-    @attribute = Attribute.new(attribute_params)
+    @attribute = @attribute_layer.palette_attributes.new(attribute_params)
 
     respond_to do |format|
       if @attribute.save
-        format.html { redirect_to @attribute, notice: 'Attribute was successfully created.' }
+        format.html { redirect_to [@palette, @attribute_layer, @attribute], notice: 'Attribute was successfully created.' }
         format.json { render action: 'show', status: :created, location: @attribute }
       else
         format.html { render action: 'new' }
@@ -57,13 +59,17 @@ class AttributesController < ApplicationController
   def destroy
     @attribute.destroy
     respond_to do |format|
-      format.html { redirect_to attributes_url }
+      format.html { redirect_to palette_attribute_layer_attributes_url(@palette, @attribute_layer) }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_palette
+      @palette = Palette.find(params[:palette_id])
+    end
+
     def set_attribute_layer
       @attribute_layer = AttributeLayer.find(params[:attribute_layer_id])
     end

@@ -18,9 +18,9 @@
         <td><%= comment.user_id %></td>
         <td><%= comment.comment_thread_id %></td>
         <td><%= comment.text %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', comment_thread_comment_path(@comment_thread, comment) %></td>
+        <td><%= link_to 'Edit', edit_comment_thread_comment_path(@comment_thread, comment) %></td>
+        <td><%= link_to 'Destroy', [@comment_thread, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Comment', new_comment_path %>
+<%= link_to 'New Comment', new_comment_thread_comment_path(@comment_thread) %>

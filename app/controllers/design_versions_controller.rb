@@ -5,7 +5,7 @@ class DesignVersionsController < ApplicationController
   # GET /design_versions
   # GET /design_versions.json
   def index
-    @design_versions = DesignVersion.all
+    @design_versions = @project.design_version.all
   end
 
   # GET /design_versions/1
@@ -15,7 +15,7 @@ class DesignVersionsController < ApplicationController
 
   # GET /design_versions/new
   def new
-    @design_version = DesignVersion.new
+    @design_version = Project.design_versions.new
   end
 
   # GET /design_versions/1/edit

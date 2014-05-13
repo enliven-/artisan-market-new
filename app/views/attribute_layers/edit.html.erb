@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @attribute_layer %> |
-<%= link_to 'Back', attribute_layers_path %>
+<%= link_to 'Show', palette_attribute_layer_path(@palette, @attribute_layer) %> |
+<%= link_to 'Back', palette_attribute_layers_path(@palette) %>
