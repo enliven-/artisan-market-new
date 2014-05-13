@@ -1,4 +1,6 @@
 ArtisanMarket::Application.routes.draw do
+  resources :attributes
+
   resources :attribute_layers
 
   resources :palettes
