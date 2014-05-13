@@ -1,0 +1,31 @@
+<h1>Listing design_versions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>Html</th>
+      <th>Comment thread count</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @design_versions.each do |design_version| %>
+      <tr>
+        <td><%= design_version.project_id %></td>
+        <td><%= design_version.html %></td>
+        <td><%= design_version.comment_thread_count %></td>
+        <td><%= link_to 'Show', design_version %></td>
+        <td><%= link_to 'Edit', edit_design_version_path(design_version) %></td>
+        <td><%= link_to 'Destroy', design_version, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Design version', new_design_version_path %>

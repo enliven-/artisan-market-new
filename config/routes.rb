@@ -1,4 +1,6 @@
 ArtisanMarket::Application.routes.draw do
+  resources :design_versions
+
   resources :comments
 
   resources :comment_threads

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @design_version.project_id %>
+</p>
+
+<p>
+  <strong>Html:</strong>
+  <%= @design_version.html %>
+</p>
+
+<p>
+  <strong>Comment thread count:</strong>
+  <%= @design_version.comment_thread_count %>
+</p>
+
+<%= link_to 'Edit', edit_design_version_path(@design_version) %> |
+<%= link_to 'Back', design_versions_path %>
