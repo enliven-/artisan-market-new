@@ -1,8 +1,6 @@
 
 rails g devise user name:string role:integer
 
-rails g migration add_role_and_name_to_user
-
 rails g scaffold project label:string description:text artisan_id:integer design_versions_count:integer parent_project_id:integer show_in_catalog:boolean product_category_id:integer customer_id:integer
 
 rails g scaffold product_category label:string
