@@ -1,4 +1,6 @@
 ArtisanMarket::Application.routes.draw do
+  resources :product_categories
+
   resources :projects
 
   devise_for :users
