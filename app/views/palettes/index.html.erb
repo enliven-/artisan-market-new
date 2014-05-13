@@ -1,0 +1,33 @@
+<h1>Listing palettes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>User</th>
+      <th>Project</th>
+      <th>Product category</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @palettes.each do |palette| %>
+      <tr>
+        <td><%= palette.label %></td>
+        <td><%= palette.user_id %></td>
+        <td><%= palette.project_id %></td>
+        <td><%= palette.product_category_id %></td>
+        <td><%= link_to 'Show', palette %></td>
+        <td><%= link_to 'Edit', edit_palette_path(palette) %></td>
+        <td><%= link_to 'Destroy', palette, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Palette', new_palette_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @palette.label %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @palette.user_id %>
+</p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @palette.project_id %>
+</p>
+
+<p>
+  <strong>Product category:</strong>
+  <%= @palette.product_category_id %>
+</p>
+
+<%= link_to 'Edit', edit_palette_path(@palette) %> |
+<%= link_to 'Back', palettes_path %>

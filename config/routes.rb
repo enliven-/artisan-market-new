@@ -1,4 +1,6 @@
 ArtisanMarket::Application.routes.draw do
+  resources :palettes
+
   resources :product_categories
 
   resources :projects
