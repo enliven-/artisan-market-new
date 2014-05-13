@@ -1,6 +1,8 @@
 ArtisanMarket::Application.routes.draw do
 
   root 'projects#index'
+  # root 'application#index'
+
 
   devise_for :users
 

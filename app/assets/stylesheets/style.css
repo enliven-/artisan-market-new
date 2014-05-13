@@ -1,0 +1,12 @@
+div.main-container {
+  padding-top: 60px;
+}
+
+.bordered {
+  border: 1px solid gray;
+}
+
+li.dropdown.text-normal.nav-profile > a {
+  margin-left: 50px !important;
+}
+

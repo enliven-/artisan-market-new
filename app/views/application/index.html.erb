@@ -1,0 +1,653 @@
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Web Application</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+  <!-- needs images, font... therefore can not be part of ui.css -->
+
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="assets/weather-icons.min.css"> -->
+
+  <!-- <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"> -->
+  <!-- <link rel="stylesheet" href="bower_components/weather-icons/css/weather-icons.min.css"> -->
+
+  <!-- end needs images -->
+  <!-- <link rel="stylesheet" href="assets/ui.css"> -->
+  <!-- <link rel="stylesheet" href="assets/main.css"> -->
+
+  <style type="text/css" id="holderjs-style"></style>
+</head>
+
+<body class="ng-scope" data-ng-app="app" id="app" data-custom-background="" data-off-canvas-nav="">
+  <!--[if lt IE 9]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+  <div class="ng-scope" data-ng-controller="AppCtrl">
+    <div class="" data-ng-hide="isSpecificPage()">
+      <!-- ngInclude: 'views/header.html' -->
+      <section data-ng-include=" 'views/header.html' " id="header" class="top-header ng-scope">
+        <header class="clearfix ng-scope"> <a href="#/" data-toggle-min-nav="" class="toggle-min"><i class="fa fa-bars"></i></a>
+          <!-- Logo -->
+          <div class="logo">
+            <a href="#/"> <span class="ng-binding">Flatify</span>
+            </a>
+          </div>
+          <!-- needs to be put after logo to make it working-->
+          <div class="menu-button" toggle-off-canvas=""> <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </div>
+          <div class="top-nav">
+            <ul class="nav-left list-unstyled">
+              <li class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-comment-o"></i>
+                  <span class="badge badge-success">2</span>
+                </a>
+                <div class="dropdown-menu with-arrow panel panel-default">
+                  <div class="panel-heading">You have 2 messages.</div>
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <a href="javascript:;" class="media"> <span class="pull-left media-icon">
+                                    <span class="round-icon sm bg-info"><i class="fa fa-comment-o"></i></span>
+                        </span>
+                        <div class="media-body"> <span class="block">Jane sent you a message</span>
+                          <span class="text-muted">3 hours ago</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="list-group-item">
+                      <a href="javascript:;" class="media"> <span class="pull-left media-icon">
+                                    <span class="round-icon sm bg-danger"><i class="fa fa-comment-o"></i></span>
+                        </span>
+                        <div class="media-body"> <span class="block">Lynda sent you a mail</span>
+                          <span class="text-muted">9 hours ago</span>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="panel-footer"> <a href="javascript:;">Show all messages.</a>
+                  </div>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-envelope-o"></i>
+                  <span class="badge badge-info">3</span>
+                </a>
+                <div class="dropdown-menu with-arrow panel panel-default">
+                  <div class="panel-heading">You have 3 mails.</div>
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <a href="javascript:;" class="media"> <span class="pull-left media-icon">
+                                    <span class="round-icon sm bg-warning"><i class="fa fa-envelope-o"></i></span>
+                        </span>
+                        <div class="media-body"> <span class="block">Lisa sent you a mail</span>
+                          <span class="text-muted block">2min ago</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="list-group-item">
+                      <a href="javascript:;" class="media"> <span class="pull-left media-icon">
+                                    <span class="round-icon sm bg-info"><i class="fa fa-envelope-o"></i></span>
+                        </span>
+                        <div class="media-body"> <span class="block">Jane sent you a mail</span>
+                          <span class="text-muted">3 hours ago</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="list-group-item">
+                      <a href="javascript:;" class="media"> <span class="pull-left media-icon">
+                                    <span class="round-icon sm bg-success"><i class="fa fa-envelope-o"></i></span>
+                        </span>
+                        <div class="media-body"> <span class="block">Lynda sent you a mail</span>
+                          <span class="text-muted">9 hours ago</span>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="panel-footer"> <a href="javascript:;">Show all mails.</a>
+                  </div>
+                </div>
+              </li>
+              <li class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-bell-o nav-icon"></i>
+                  <span class="badge badge-warning">3</span>
+                </a>
+                <div class="dropdown-menu with-arrow panel panel-default">
+                  <div class="panel-heading">You have 3 notifications.</div>
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <a href="javascript:;" class="media"> <span class="pull-left media-icon">
+                                    <span class="round-icon sm bg-success"><i class="fa fa-bell-o"></i></span>
+                        </span>
+                        <div class="media-body"> <span class="block">New tasks needs to be done</span>
+                          <span class="text-muted block">2min ago</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="list-group-item">
+                      <a href="javascript:;" class="media"> <span class="pull-left media-icon">
+                                    <span class="round-icon sm bg-info"><i class="fa fa-bell-o"></i></span>
+                        </span>
+                        <div class="media-body"> <span class="block">Change your password</span>
+                          <span class="text-muted">3 hours ago</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="list-group-item">
+                      <a href="javascript:;" class="media"> <span class="pull-left media-icon">
+                                    <span class="round-icon sm bg-danger"><i class="fa fa-bell-o"></i></span>
+                        </span>
+                        <div class="media-body"> <span class="block">New feature added</span>
+                          <span class="text-muted">9 hours ago</span>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="panel-footer"> <a href="javascript:;">Show all notifications.</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <ul class="nav-right pull-right list-unstyled">
+              <li class="dropdown langs text-normal ng-scope" data-ng-controller="LangCtrl"> <a href="javascript:;" class="dropdown-toggle ng-binding" data-toggle="dropdown">
+                    English
+                </a>
+                <ul class="dropdown-menu with-arrow pull-right list-langs" role="menu">
+                  <li class="ng-hide" data-ng-show="lang !== 'English' ">
+                    <a href="javascript:;" data-ng-click="setLang('English')">
+                      <div class="flag flags-american"></div>English</a>
+                  </li>
+                  <li class="" data-ng-show="lang !== 'Español' ">
+                    <a href="javascript:;" data-ng-click="setLang('Español')">
+                      <div class="flag flags-spain"></div>Español</a>
+                  </li>
+                  <li class="" data-ng-show="lang !== '日本語' ">
+                    <a href="javascript:;" data-ng-click="setLang('日本語')">
+                      <div class="flag flags-japan"></div>日本語</a>
+                  </li>
+                  <li class="" data-ng-show="lang !== '中文' ">
+                    <a href="javascript:;" data-ng-click="setLang('中文')">
+                      <div class="flag flags-china"></div>中文</a>
+                  </li>
+                  <li class="" data-ng-show="lang !== 'Deutsch' ">
+                    <a href="javascript:;" data-ng-click="setLang('Deutsch')">
+                      <div class="flag flags-german"></div>Deutsch</a>
+                  </li>
+                  <li class="" data-ng-show="lang !== 'français' ">
+                    <a href="javascript:;" data-ng-click="setLang('français')">
+                      <div class="flag flags-france"></div>français</a>
+                  </li>
+                  <li class="" data-ng-show="lang !== 'Italiano' ">
+                    <a href="javascript:;" data-ng-click="setLang('Italiano')">
+                      <div class="flag flags-italy"></div>Italiano</a>
+                  </li>
+                  <li class="" data-ng-show="lang !== 'Portugal' ">
+                    <a href="javascript:;" data-ng-click="setLang('Portugal')">
+                      <div class="flag flags-portugal"></div>Portugal</a>
+                  </li>
+                  <li class="" data-ng-show="lang !== 'Русский язык' ">
+                    <a href="javascript:;" data-ng-click="setLang('Русский язык')">
+                      <div class="flag flags-russia"></div>Русский язык</a>
+                  </li>
+                  <li class="" data-ng-show="lang !== '한국어' ">
+                    <a href="javascript:;" data-ng-click="setLang('한국어')">
+                      <div class="flag flags-korea"></div>한국어</a>
+                  </li>
+                </ul>
+              </li>
+              <!--             <li class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="fa fa-magic nav-icon"></span>
+                </a>
+                <ul class="dropdown-menu pull-right color-switch" data-ui-color-switch>
+                    <li><a href="javascript:;" class="color-option color-some_color" data-style="some_color"></a></li>
+                </ul>
+            </li> -->
+              <li class="dropdown text-normal nav-profile">
+                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src="images/g1.jpg" alt="" class="img-circle img30_30"> <span class="hidden-xs">
+                        <span data-i18n="Lisa Doe">Lisa Doe</span>
+                  </span>
+                </a>
+                <ul class="dropdown-menu with-arrow pull-right">
+                  <li>
+                    <a href="#/pages/profile"> <i class="fa fa-user"></i>
+                      <span data-i18n="My Profile">My Profile</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#/tasks"> <i class="fa fa-check"></i>
+                      <span data-i18n="My Tasks">My Tasks</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#/pages/lock-screen"> <i class="fa fa-lock"></i>
+                      <span data-i18n="Lock">Lock</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#/pages/signin"> <i class="fa fa-sign-out"></i>
+                      <span data-i18n="Log Out">Log Out</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </header>
+      </section>
+      <!-- ngInclude: 'views/nav.html' -->
+      <aside class="ng-scope" data-ng-include=" 'views/nav.html' " id="nav-container">
+        <div class="ng-scope" id="nav-wrapper">
+          <div style="position: relative; overflow: hidden; width: auto; height: 100%;" class="slimScrollDiv">
+            <ul style="overflow: hidden; width: auto; height: 100%;" class="ng-scope" id="nav" data-ng-controller="NavCtrl" data-collapse-nav="" data-slim-scroll="" data-highlight-active="">
+              <li class="active">
+                <a href="#/dashboard"> <i class="fa fa-dashboard"><span class="icon-bg bg-danger"></span></i><span data-i18n="Dashboard">Dashboard</span> 
+                </a>
+              </li>
+              <li> <a href="#/ui"><i class="fa fa-magic"><span class="icon-bg bg-orange"></span></i><span data-i18n="UI Kit">UI Kit</span></a>
+                <ul>
+                  <li><a href="#/ui/buttons"><i class="fa fa-caret-right"></i><span data-i18n="Buttons">Buttons</span></a>
+                  </li>
+                  <li><a href="#/ui/typography"><i class="fa fa-caret-right"></i><span data-i18n="Typography">Typography</span></a>
+                  </li>
+                  <li><a href="#/ui/widgets"><i class="fa fa-caret-right"></i><span data-i18n="Widgets">Widgets</span> <span class="badge badge-success">12</span></a>
+                  </li>
+                  <li><a href="#/ui/grids"><i class="fa fa-caret-right"></i><span data-i18n="Grids">Grids</span></a>
+                  </li>
+                  <li><a href="#/ui/icons"><i class="fa fa-caret-right"></i><span data-i18n="Icons">Icons</span></a>
+                  </li>
+                  <li><a href="#/ui/components"><i class="fa fa-caret-right"></i><span data-i18n="Components">Components</span> <span class="badge badge-info">14</span></a>
+                  </li>
+                  <li><a href="#/ui/timeline"><i class="fa fa-caret-right"></i><span data-i18n="Timeline">Timeline</span></a>
+                  </li>
+                </ul> <i class="fa fa-caret-right icon-has-ul"></i>
+              </li>
+              <li> <a href="#/table"><i class="fa fa-table"><span class="icon-bg bg-warning"></span></i><span data-i18n="Tables">Tables</span></a>
+                <ul>
+                  <li><a href="#/tables/static"><i class="fa fa-caret-right"></i><span data-i18n="Static Tables">Static Tables</span></a>
+                  </li>
+                  <li><a href="#/tables/responsive"><i class="fa fa-caret-right"></i><span data-i18n="Responsive Tables">Responsive Tables</span></a>
+                  </li>
+                  <li><a href="#/tables/dynamic"><i class="fa fa-caret-right"></i><span data-i18n="Dynamic Tables">Dynamic Tables</span></a>
+                  </li>
+                </ul> <i class="fa fa-caret-right icon-has-ul"></i>
+              </li>
+              <li> <a href="#/form"><i class="fa fa-pencil"><span class="icon-bg bg-success"></span></i><span data-i18n="Forms">Forms</span></a>
+                <ul class="sub-nav">
+                  <li><a href="#/forms/elements"><i class="fa fa-caret-right"></i><span data-i18n="Form Elements">Form Elements</span> <span class="badge badge-warning">13</span></a>
+                  </li>
+                  <li><a href="#/forms/validation"><i class="fa fa-caret-right"></i><span data-i18n="Form Validation">Form Validation</span></a>
+                  </li>
+                  <li><a href="#/forms/wizard"><i class="fa fa-caret-right"></i><span data-i18n="Form Wizard">Form Wizard</span></a>
+                  </li>
+                  <li><a href="#/forms/layouts"><i class="fa fa-caret-right"></i><span data-i18n="Form Layouts">Form Layouts</span></a>
+                  </li>
+                </ul> <i class="fa fa-caret-right icon-has-ul"></i>
+              </li>
+              <li class="nav-task">
+                <a href="#/tasks"> <i class="fa fa-tasks"><span class="icon-bg bg-info"></span></i><span data-i18n="Tasks">Tasks</span>
+                  <span class="badge badge-danger main-badge ng-binding" data-ng-show="taskRemainingCount > 0">2</span>
+                </a>
+              </li>
+              <li> <a href="#/charts"><i class="fa fa-bar-chart-o"><span class="icon-bg bg-primary-light"></span></i><span data-i18n="Charts">Charts</span></a>
+                <ul>
+                  <li><a href="#/charts/morris"><i class="fa fa-caret-right"></i>Morris <span data-i18n="Charts">Charts</span></a>
+                  </li>
+                  <li><a href="#/charts/flot"><i class="fa fa-caret-right"></i>Flot <span data-i18n="Charts">Charts</span></a>
+                  </li>
+                  <li><a href="#/charts/others"><i class="fa fa-caret-right"></i>Other <span data-i18n="Charts">Charts</span></a>
+                  </li>
+                </ul> <i class="fa fa-caret-right icon-has-ul"></i>
+              </li>
+              <li> <a href="#/mail"><i class="fa fa-envelope-o"><span class="icon-bg bg-primary"></span></i><span data-i18n="Mail">Mail</span></a>
+                <ul>
+                  <li><a href="#/mail/inbox"><i class="fa fa-caret-right"></i><span data-i18n="Inbox">Inbox</span></a>
+                  </li>
+                  <li><a href="#/mail/compose"><i class="fa fa-caret-right"></i><span data-i18n="Compose">Compose</span></a>
+                  </li>
+                  <li><a href="#/mail/single"><i class="fa fa-caret-right"></i><span data-i18n="Single Mail">Single Mail</span></a>
+                  </li>
+                </ul> <i class="fa fa-caret-right icon-has-ul"></i>
+              </li>
+              <li> <a href="#/pages"><i class="fa fa-file-text-o"><span class="icon-bg bg-violet"></span></i><span data-i18n="Pages">Pages</span></a>
+                <ul>
+                  <li><a href="#/pages/signin"><i class="fa fa-caret-right"></i><span data-i18n="Sign in">Sign in</span></a>
+                  </li>
+                  <li><a href="#/pages/signup"><i class="fa fa-caret-right"></i><span data-i18n="Sign Up">Sign Up</span></a>
+                  </li>
+                  <li><a href="#/pages/lock-screen"><i class="fa fa-caret-right"></i><span data-i18n="Lock Screen">Lock Screen</span></a>
+                  </li>
+                  <li><a href="#/pages/profile"><i class="fa fa-caret-right"></i><span data-i18n="User Profile">User Profile</span></a>
+                  </li>
+                  <li><a href="#/pages/404"><i class="fa fa-caret-right"></i>404 <span data-i18n="Error">Error</span></a>
+                  </li>
+                  <li><a href="#/pages/500"><i class="fa fa-caret-right"></i>500 <span data-i18n="Error">Error</span></a>
+                  </li>
+                  <li><a href="#/pages/blank"><i class="fa fa-caret-right"></i><span data-i18n="Blank Page">Blank Page</span></a>
+                  </li>
+                  <!-- <li><a href="#/pages/invoice"><i class="fa fa-caret-right"></i><span data-i18n="Invoice"></span></a></li> -->
+                </ul> <i class="fa fa-caret-right icon-has-ul"></i>
+              </li>
+            </ul>
+            <div style="background: none repeat scroll 0% 0% rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; border-radius: 7px; z-index: 99; right: 1px; height: 699px; display: none;" class="slimScrollBar"></div>
+            <div style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: none repeat scroll 0% 0% rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;" class="slimScrollRail"></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="view-container">
+      <!-- ngView:  -->
+      <section data-ng-view="" id="content" class="animate-fade-up ng-scope">
+        <div class="page page-dashboard ng-scope" data-ng-controller="DashboardCtrl">
+          <!-- stats -->
+          <div class="row">
+            <div class="col-lg-3 col-xsm-6">
+              <div class="panel mini-box"> <span class="box-icon bg-success">
+                    <i class="fa fa-rocket"></i>
+                </span>
+                <div class="box-info">
+                  <p class="size-h2">25 <span class="size-h4">%</span>
+                  </p>
+                  <p class="text-muted"><span data-i18n="Growth">Growth</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-xsm-6">
+              <div class="panel mini-box"> <span class="box-icon bg-info">
+                    <i class="fa fa-users"></i>
+                </span>
+                <div class="box-info">
+                  <p class="size-h2">112</p>
+                  <p class="text-muted"><span data-i18n="New users">New users</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-xsm-6">
+              <div class="panel mini-box"> <span class="box-icon bg-warning">
+                    <i class="fa fa-dollar"></i>
+                </span>
+                <div class="box-info">
+                  <p class="size-h2">4,550</p>
+                  <p class="text-muted"><span data-i18n="Profit">Profit</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-xsm-6">
+              <div class="panel mini-box"> <span class="box-icon bg-danger">
+                    <i class="fa fa-shopping-cart"></i>
+                </span>
+                <div class="box-info">
+                  <p class="size-h2">262</p>
+                  <p class="text-muted"><span data-i18n="Sales">Sales</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end stats -->
+          <div class="row">
+            <div class="col-md-8">
+              <section class="panel panel-default">
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span data-i18n="Data">Data</span></strong>
+                </div>
+                <div class="panel-body ng-scope" data-ng-controller="morrisChartCtrl">
+                  <div class="ng-isolate-scope" morris-chart="" data-data="comboData" data-type="bar" data-xkey="year" data-ykeys="[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]" data-labels="[&quot;Value A&quot;, &quot;Value B&quot;, &quot;Value C&quot;]" data-bar-colors="[&quot;#176799&quot;,&quot;#42A4BB&quot;,&quot;#78D6C7&quot;]" style="height: 300px; position: relative;">
+                    <svg style="overflow: hidden; position: relative;" xmlns="http://www.w3.org/2000/svg" width="938" version="1.1" height="300">
+                      <desc>Created with Raphaël 2.1.0</desc>
+                      <defs></defs>
+                      <text font-weight="normal" font-family="sans-serif" font-size="12px" fill="#888888" stroke="none" font="10px &quot;Arial&quot;" text-anchor="end" y="260" x="40.5" style="text-anchor: end; font: 12px sans-serif;">
+                        <tspan dy="4">0</tspan>
+                      </text>
+                      <path stroke-width="0.5" d="M53,260H913" stroke="#aaaaaa" fill="none" style=""></path>
+                      <text font-weight="normal" font-family="sans-serif" font-size="12px" fill="#888888" stroke="none" font="10px &quot;Arial&quot;" text-anchor="end" y="201.25" x="40.5" style="text-anchor: end; font: 12px sans-serif;">
+                        <tspan dy="4">7.5</tspan>
+                      </text>
+                      <path stroke-width="0.5" d="M53,201.25H913" stroke="#aaaaaa" fill="none" style=""></path>
+                      <text font-weight="normal" font-family="sans-serif" font-size="12px" fill="#888888" stroke="none" font="10px &quot;Arial&quot;" text-anchor="end" y="142.5" x="40.5" style="text-anchor: end; font: 12px sans-serif;">
+                        <tspan dy="4">15</tspan>
+                      </text>
+                      <path stroke-width="0.5" d="M53,142.5H913" stroke="#aaaaaa" fill="none" style=""></path>
+                      <text font-weight="normal" font-family="sans-serif" font-size="12px" fill="#888888" stroke="none" font="10px &quot;Arial&quot;" text-anchor="end" y="83.75" x="40.5" style="text-anchor: end; font: 12px sans-serif;">
+                        <tspan dy="4">22.5</tspan>
+                      </text>
+                      <path stroke-width="0.5" d="M53,83.75H913" stroke="#aaaaaa" fill="none" style=""></path>
+                      <text font-weight="normal" font-family="sans-serif" font-size="12px" fill="#888888" stroke="none" font="10px &quot;Arial&quot;" text-anchor="end" y="25" x="40.5" style="text-anchor: end; font: 12px sans-serif;">
+                        <tspan dy="4">30</tspan>
+                      </text>
+                      <path stroke-width="0.5" d="M53,25H913" stroke="#aaaaaa" fill="none" style=""></path>
+                      <text transform="matrix(1,0,0,1,0,7.5)" font-weight="normal" font-family="sans-serif" font-size="12px" fill="#888888" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="272.5" x="841.3333333333334" style="text-anchor: middle; font: 12px sans-serif;">
+                        <tspan dy="4">2013</tspan>
+                      </text>
+                      <text transform="matrix(1,0,0,1,0,7.5)" font-weight="normal" font-family="sans-serif" font-size="12px" fill="#888888" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="272.5" x="698" style="text-anchor: middle; font: 12px sans-serif;">
+                        <tspan dy="4">2012</tspan>
+                      </text>
+                      <text transform="matrix(1,0,0,1,0,7.5)" font-weight="normal" font-family="sans-serif" font-size="12px" fill="#888888" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="272.5" x="554.6666666666667" style="text-anchor: middle; font: 12px sans-serif;">
+                        <tspan dy="4">2011</tspan>
+                      </text>
+                      <text transform="matrix(1,0,0,1,0,7.5)" font-weight="normal" font-family="sans-serif" font-size="12px" fill="#888888" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="272.5" x="411.3333333333333" style="text-anchor: middle; font: 12px sans-serif;">
+                        <tspan dy="4">2010</tspan>
+                      </text>
+                      <text transform="matrix(1,0,0,1,0,7.5)" font-weight="normal" font-family="sans-serif" font-size="12px" fill="#888888" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="272.5" x="268" style="text-anchor: middle; font: 12px sans-serif;">
+                        <tspan dy="4">2009</tspan>
+                      </text>
+                      <text transform="matrix(1,0,0,1,0,7.5)" font-weight="normal" font-family="sans-serif" font-size="12px" fill="#888888" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="272.5" x="124.66666666666667" style="text-anchor: middle; font: 12px sans-serif;">
+                        <tspan dy="4">2008</tspan>
+                      </text>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#176799" ry="0" rx="0" r="0" height="156.66666666666666" width="33.833333333333336" y="103.33333333333334" x="70.91666666666667"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#42a4bb" ry="0" rx="0" r="0" height="125.33333333333331" width="33.833333333333336" y="134.66666666666669" x="107.75"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#78d6c7" ry="0" rx="0" r="0" height="94" width="33.833333333333336" y="166" x="144.58333333333334"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#176799" ry="0" rx="0" r="0" height="78.33333333333331" width="33.833333333333336" y="181.66666666666669" x="214.25"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#42a4bb" ry="0" rx="0" r="0" height="172.33333333333331" width="33.833333333333336" y="87.66666666666669" x="251.08333333333334"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#78d6c7" ry="0" rx="0" r="0" height="235" width="33.833333333333336" y="25" x="287.9166666666667"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#176799" ry="0" rx="0" r="0" height="39.16666666666666" width="33.833333333333336" y="220.83333333333334" x="357.58333333333337"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#42a4bb" ry="0" rx="0" r="0" height="109.66666666666666" width="33.833333333333336" y="150.33333333333334" x="394.4166666666667"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#78d6c7" ry="0" rx="0" r="0" height="156.66666666666666" width="33.833333333333336" y="103.33333333333334" x="431.25000000000006"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#176799" ry="0" rx="0" r="0" height="39.16666666666666" width="33.833333333333336" y="220.83333333333334" x="500.9166666666667"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#42a4bb" ry="0" rx="0" r="0" height="94" width="33.833333333333336" y="166" x="537.75"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#78d6c7" ry="0" rx="0" r="0" height="148.83333333333331" width="33.833333333333336" y="111.16666666666669" x="574.5833333333334"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#176799" ry="0" rx="0" r="0" height="156.66666666666666" width="33.833333333333336" y="103.33333333333334" x="644.25"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#42a4bb" ry="0" rx="0" r="0" height="148.83333333333331" width="33.833333333333336" y="111.16666666666669" x="681.0833333333334"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#78d6c7" ry="0" rx="0" r="0" height="101.83333333333331" width="33.833333333333336" y="158.16666666666669" x="717.9166666666666"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#176799" ry="0" rx="0" r="0" height="219.33333333333331" width="33.833333333333336" y="40.666666666666686" x="787.5833333333334"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#42a4bb" ry="0" rx="0" r="0" height="172.33333333333331" width="33.833333333333336" y="87.66666666666669" x="824.4166666666667"></rect>
+                      <rect fill-opacity="1" style="fill-opacity: 1;" stroke="none" fill="#78d6c7" ry="0" rx="0" r="0" height="156.66666666666666" width="33.833333333333336" y="103.33333333333334" x="861.25"></rect>
+                    </svg>
+                    <div style="left: 799.333px; top: 103px;" class="morris-hover morris-default-style">
+                      <div class="morris-hover-row-label">2013</div>
+                      <div class="morris-hover-point" style="color: #176799">Value A: 28</div>
+                      <div class="morris-hover-point" style="color: #42A4BB">Value B: 22</div>
+                      <div class="morris-hover-point" style="color: #78D6C7">Value C: 20</div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="col-md-4">
+              <div class="panel panel-default">
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span data-i18n="Data">Data</span></strong>
+                </div>
+                <div class="panel-body ng-scope" data-ng-controller="flotChartCtrl">
+                  <div class="ng-isolate-scope" data-flot-chart="" data-data="donutChart2.data" data-options="donutChart2.options" style="width: 100%; height: 300px; padding: 0px; position: relative;">
+                    <canvas height="300" width="438" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 438px; height: 300px;" class="flot-base"></canvas>
+                    <canvas height="300" width="438" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 438px; height: 300px;" class="flot-overlay"></canvas><span class="pieLabel" id="pieLabel0" style="position: absolute; top: 8.5px; left: 233px;"><div style="font-size:x-small;text-align:center;padding:2px;color:rgb(23,103,153);">Download Sales<br>13%</div></span><span class="pieLabel" id="pieLabel1" style="position: absolute; top: 159.5px; left: 320px;"><div style="font-size:x-small;text-align:center;padding:2px;color:rgb(47,135,176);">In-Store Sales<br>31%</div></span><span class="pieLabel" id="pieLabel2" style="position: absolute; top: 264.5px; left: 145px;"><div style="font-size:x-small;text-align:center;padding:2px;color:rgb(66,164,187);">Mail-Order Sales<br>21%</div></span><span class="pieLabel" id="pieLabel3" style="position: absolute; top: 137.5px; left: 54.5px;"><div style="font-size:x-small;text-align:center;padding:2px;color:rgb(91,192,196);">Online Sales<br>20%</div></span><span class="pieLabel" id="pieLabel4" style="position: absolute; top: 14.5px; left: 126.5px;"><div style="font-size:x-small;text-align:center;padding:2px;color:rgb(120,214,199);">Direct Sales<br>16%</div></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="panel panel-default">
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span data-i18n="Realtime Data">Realtime Data</span></strong>
+                </div>
+                <div class="panel-body">
+                  <div data-flot-chart-realtime="" data-type="realtime" style="width: 100%; height: 275px; padding: 0px; position: relative;">
+                    <canvas height="275" width="938" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 938px; height: 275px;" class="flot-base"></canvas>
+                    <div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);" class="flot-text">
+                      <div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;" class="flot-y-axis flot-y1-axis yAxis y1Axis">
+                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 259px; left: 13px; text-align: right;">0</div>
+                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 207px; left: 7px; text-align: right;">20</div>
+                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 155px; left: 7px; text-align: right;">40</div>
+                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 104px; left: 7px; text-align: right;">60</div>
+                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 52px; left: 7px; text-align: right;">80</div>
+                        <div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 1px; text-align: right;">100</div>
+                      </div>
+                    </div>
+                    <canvas height="275" width="938" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 938px; height: 275px;" class="flot-overlay"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <section class="panel panel-box">
+                <div class="panel-top bg-info">
+                  <div class="text-left">SNOW</div>
+                  <div class="divider divider-xl"></div>
+                  <div class="divider divider-lg"></div>
+                </div>
+                <div class="panel-icon bg-info">
+                  <!-- <i class="wi-day-cloudy"></i> -->
+                  <canvas ui-weather="" icon="SNOW" color="#fff" width="70" height="70"></canvas>
+                </div>
+                <div class="panel-bottom bg-reverse">
+                  <ul class="list-justified text-center">
+                    <li>
+                      <canvas ui-weather="" icon="RAIN" color="#23AE89" width="40" height="40"></canvas>
+                      <p class="text-muted">Wednesday</p>
+                    </li>
+                    <li>
+                      <canvas ui-weather="" icon="WIND" color="#6A55C2" width="40" height="40"></canvas>
+                      <p class="text-muted">Thursday</p>
+                    </li>
+                    <li>
+                      <canvas ui-weather="" icon="CLEAR_DAY" color="#FFB61C" width="40" height="40"></canvas>
+                      <p class="text-muted">Friday</p>
+                    </li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> <span data-i18n="Table">Table</span></strong>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Project</th>
+                  <th>Manager</th>
+                  <th>Status</th>
+                  <th>Progress</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><span class="color-success"><i class="fa fa-level-up"></i></span> TWLT</td>
+                  <td>Amery Lee</td>
+                  <td><span class="label label-info">Pending</span>
+                  </td>
+                  <td>
+                    <div value="55" class="progressbar-xs no-margin progress ng-isolate-scope">
+                      <div style="width: 55%;" class="progress-bar" ng-class="type &amp;&amp; 'progress-bar-' + type" ng-transclude=""></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><span class="color-success"><i class="fa fa-level-up"></i></span> A16Z</td>
+                  <td>Romayne Carlyn</td>
+                  <td><span class="label label-primary">Due</span>
+                  </td>
+                  <td>
+                    <div value="34" type="success" class="progressbar-xs no-margin progress ng-isolate-scope">
+                      <div style="width: 34%;" class="progress-bar progress-bar-success" ng-class="type &amp;&amp; 'progress-bar-' + type" ng-transclude=""></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td><span class="color-warning"><i class="fa fa-level-down"></i></span> DARK</td>
+                  <td>Marybeth Joanna</td>
+                  <td><span class="label label-success">Due</span>
+                  </td>
+                  <td>
+                    <div value="68" type="info" class="progressbar-xs no-margin progress ng-isolate-scope">
+                      <div style="width: 68%;" class="progress-bar progress-bar-info" ng-class="type &amp;&amp; 'progress-bar-' + type" ng-transclude=""></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td><span class="color-info"><i class="fa fa-level-up"></i></span> Q300</td>
+                  <td>Jonah Benny</td>
+                  <td><span class="label label-danger">Blocked</span>
+                  </td>
+                  <td>
+                    <div value="52" type="warning" class="progressbar-xs no-margin progress ng-isolate-scope">
+                      <div style="width: 52%;" class="progress-bar progress-bar-warning" ng-class="type &amp;&amp; 'progress-bar-' + type" ng-transclude=""></div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td><span class="color-danger"><i class="fa fa-level-down"></i></span> RVNG</td>
+                  <td>Daly Royle</td>
+                  <td><span class="label label-warning">Suspended</span>
+                  </td>
+                  <td>
+                    <div value="77" type="danger" class="progressbar-xs no-margin progress ng-isolate-scope">
+                      <div style="width: 77%;" class="progress-bar progress-bar-danger" ng-class="type &amp;&amp; 'progress-bar-' + type" ng-transclude=""></div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <!-- // <script src="assets/vendor.js"></script> -->
+  <!-- // <script src="assets/ui.js"></script> -->
+  <!-- // <script src="_assets/app.js"></script> -->
+  <div style="display: none; position: absolute;" id="flotTip"></div>
+</body>
+
+</html>
+
+
+<!-- <div class="row body-container">
+
+  <div class="row">
+    <section id="header" class="top-header">
+      <%= render "layouts/top_nav" %>
+    </section>
+  </div>
+
+  <div class="row main-container">
+    <aside id="nav-container">
+      <%= render "layouts/side_nav" %>
+    </aside>
+
+    <div class="col-md-8 col-md-offset-2">
+      <div class="content-container row bordered">
+        <%= yield %>
+      </div>
+    </div>
+
+  </div>
+
+</div> -->
