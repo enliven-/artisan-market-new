@@ -1,0 +1,8 @@
+
+rails g scaffold 
+
+
+rails g devise user email:string name:string role:integer
+
+rails g migration add_role_and_name_to_user
+

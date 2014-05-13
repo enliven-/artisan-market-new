@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-BootstrapTest::Application.load_tasks
+ArtisanMarket::Application.load_tasks

@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-BootstrapTest::Application.config.secret_key_base = '3143309110be96db223c0e2fa3fa6b92bb72c4d42adcdde0e70842512494d7776a3f9d5d9c11893f5cf7f0753fd318b1b5b9b49b4b0591a0f0b2882599ae57a3'
+ArtisanMarket::Application.config.secret_key_base = '3143309110be96db223c0e2fa3fa6b92bb72c4d42adcdde0e70842512494d7776a3f9d5d9c11893f5cf7f0753fd318b1b5b9b49b4b0591a0f0b2882599ae57a3'
