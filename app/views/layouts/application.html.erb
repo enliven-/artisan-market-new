@@ -102,6 +102,36 @@
 
     $("form input.btn").addClass("btn-primary");
 
+    $("ul#nav > li").on("click", function(e) {
+      var $this   = $(this);
+      var $others = $this.siblings();
+      
+      // $others.removeClass("open");
+      // $this.addClass("open");
+
+      $.each($others, function(i, el) {
+        var $el = $(el);
+        if ($el.hasClass("open")) {
+          $el.find("ul").slideUp();
+          $el.remoevClass("open");
+        }
+      });
+
+      $this.addClass("open");
+      $this.find("ul").slideDown();
+    });
+
+        // link: function (scope, ele) {
+        //   var $a, $aRest, $lists, $listsRest, app;
+        //   return $lists = ele.find("ul").parent("li"), $lists.append('<i class="fa fa-caret-right icon-has-ul"></i>'), $a = $lists.children("a"), $listsRest = ele.children("li").not($lists), $aRest = $listsRest.children("a"), app = $("#app"), $a.on("click", function (event) {
+        //     var $parent, $this;
+        //     return app.hasClass("nav-min") ? !1 : ($this = $(this), $parent = $this.parent("li"), $lists.not($parent).removeClass("open").find("ul").slideUp(), $parent.toggleClass("open").find("ul").slideToggle(), event.preventDefault())
+        //   }), $aRest.on("click", function () {
+        //     return $lists.removeClass("open").find("ul").slideUp()
+        //   }), scope.$on("minNav:enabled", function () {
+        //     return $lists.removeClass("open").find("ul").slideUp()
+        //   })
+        // }
     
   });
 </script>
@@ -112,3 +142,4 @@
   background-color: #f3f3f3;
 }
 </style>
+
