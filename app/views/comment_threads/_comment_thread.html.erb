@@ -1,0 +1,26 @@
+<!-- <div class="comment-thread">
+  <span class="comment-thread-header">Comments for Pin <span class='number'></span></span>
+  <div  class="comment-history"></div>
+  <span class= "close">X</span>
+  <textarea class="txt"></textarea>
+
+</div> -->
+
+<div class="panel panel-default comment-thread">
+  <div class="panel-heading"><span class="glyphicon glyphicon-th"></span> Comments: Pin x</div>
+  <div class="panel-body ng-scope" data-ng-controller="CollapseDemoCtrl">
+    <!-- <button class="btn btn-primary" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button> -->
+    <!-- <hr> -->
+    <div class="comment-history"></div>
+
+    <div collapse="isCollapsed" class="collapse in" style="height: auto;">
+      <div class="form-group">
+        <!-- <label for="" class="col-sm-3">Textarea</label> -->
+        <!-- <div class="col-sm-3"> -->
+          <textarea name="" id="" class="form-control"></textarea>
+        <!-- </div> -->
+      </div>
+      <!-- <div class="well well-lg">Some content</div>  -->
+    </div>            
+  </div>
+</div>

@@ -1,0 +1,262 @@
+<div class="row">...</div>
+<div class="row _medium-centered bordered">
+
+  <div class="col-md-3 _columns bordered" id="palette">
+    
+    <%= select_tag :palette, options_from_collection_for_select(@attribute_layers, :id, :label), include_blank: true, id: "layer-select" %>
+
+    <% @attribute_layers.each do |attr_layer| %>    
+    <div class="medium-block-grid-3 bordered layer hidden" id="<%= attr_layer.id %>">
+      <img class="img-thm original" src="http://placehold.it/60x60"> 
+      <img class="img-thm original" src="http://placehold.it/60x60"> 
+      <img class="img-thm original" src="http://placehold.it/60x60">
+      <img class="img-thm original" src="http://placehold.it/60x60"> 
+      <img class="img-thm original" src="http://placehold.it/60x60"> 
+      <img class="img-thm original" src="http://placehold.it/60x60">
+      <%= attr_layer.id %>
+    </div>
+    <% end %>
+
+  </div>
+  
+  <div class="col-md-9 bordered">
+
+    <div class="btn-toolbar" role="toolbar" id="controls">
+      <button type="button" class="btn btn-primary btn-sm">&#60; Prev Vers.</button>
+      <button type="button" class="btn btn-primary btn-sm">Next Vers. &#62;</button>
+      <button type="button" class="btn btn-primary btn-sm">Remove Img</button>
+      <button type="button" class="btn btn-primary btn-sm _alert">Reset</button>
+      <button type="button" class="btn btn-primary btn-sm success" id="save">Save Vers.</button>
+    </div>
+
+    <div class="row bordered" id="design-container">
+    
+      <div class="col-md-9 unselectable bordered" id="design">
+        <img src="http://placehold.it/600x600">...
+      </div>
+ 
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+  var user = "viksit"
+  ,   role = "customer"
+  ,   dvid = 1;
+
+  $("#design-container")
+                    .on("dblclick", function(e) {
+                      var offset = $(this).offset();
+                      var x = Math.round(e.clientX - offset.left) - 10;
+                      var y = Math.round(e.clientY - offset.top) + 23;
+                      console.log("dblclick");
+                      params = { 'comment_thread': { 'pin_x': x, 'pin_y': y, 'design_version_id': 1 } };
+
+                      $.ajax({
+                        url     : "/comment_threads/", 
+                        method  : "POST",
+                        data    : params
+                      });
+                    })
+
+                    .on("click", ".pin", function(e) {
+                      var sel_pin_id_int          = parse_id_int($(e.target));
+                      var sel_comment_thread_id   = "#comment-thread-" + sel_pin_id_int;
+
+                      $(".comment-thread").addClass("hidden");
+                      $(sel_comment_thread_id).removeClass("hidden")
+                                              .find("textarea").focus();
+                    });
+
+  $("#controls")
+          .on("click", "#save", function(e) {
+
+            $(".unsaved").each(function(i, ct) {
+              
+              var ct_id   = parse_id_int($(ct).attr("id"));
+              var pin_y   = $("#pin-"+ct_id).css("left");
+              var pin_x   = $("#pin-"+ct_id).css("top");
+
+              $(".new", $(ct)).each(function(j, c) {
+                var new_comment = $(c).find(".text").text();
+                params = { 'comment': { 'text': new_comment, 'comment_thread_id': ct_id, 'user_id': 1 } };
+                $.ajax({
+                  url       : "/comment_threads/" + ct_id + "/comments/",
+                  method    : "POST",
+                  data      : params,
+                  success   : function() { $(c).removeClass("new"); }
+                });
+              })
+
+              $.ajax({
+                url         : "/comment_threads/"+ct_id,
+                method      : "PUT",
+                data        : { 'comment_thread' : { 'pin_x': pin_x, 'pin_y': pin_y, 'design_version_id': dvid } },
+                success     : function() { $(ct).removeClass("unsaved"); }
+              });
+
+            });
+
+
+
+            $.ajax({
+              url         : "design_versions/",
+              method      : "POST",
+              data        : { 'design_version' : { 'project_id': 1 } },
+              success     : function() { 
+                              dvid = "<%= session[:design_version_id] %>";
+                              $("#save").addClass("disabled");
+                            }
+            });
+
+          });
+
+
+  $("#controls")
+          .on("click", "#reset", function(e) {
+
+
+          });
+
+
+
+  $("#layer-select").on("change", function() {
+    var self        = $("layer-select");
+    var layer_id    = this.options[this.selectedIndex].value;
+    var $sel_layer   = $("#"+layer_id);
+    $(".layer").addClass("hidden");
+    $sel_layer.removeClass("hidden");    
+  });
+
+  var count        = 0;                  
+  var parse_id_int = function(str)  { return parseInt(str.split("-")[2]); };
+  var get_count    = function()     { count += 1; console.log("get_count" + count); return count; }
+
+
+  $(".img-thm").draggable({
+    helper  : "clone",
+  });
+
+
+  $("#design-container").droppable({
+    drop: function( event, ui ) {
+            if ( $(ui.draggable).hasClass("original") ) {
+              $( ui.draggable ).clone().removeClass("original").addClass("copy").appendTo("#design-container").draggable({containment: "#design-container"});
+            }
+          }
+  });
+
+
+
+});
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+
+.hidden {
+  display: none;
+}
+
+.bordered {
+  border: 1px solid gray;
+}
+
+.layer > img {
+  padding: 4px;
+}
+
+#controls {
+  margin: 5px;
+  /*color: #fff;*/
+}
+
+.unselectable {
+   -moz-user-select     : none;
+   -khtml-user-select   : none;
+   -webkit-user-select  : none;
+   -o-user-select       : none;
+   user-select          : none;
+}
+
+.comment-thread {
+
+  border: 1px solid gray;
+  /*padding: 5px;*/
+  min-width: 275px;
+  max-width: 275px;
+  /*background-color: white;*/
+  position: absolute;
+  bottom: 0px;
+  right:  0px;
+  max-height: 300px;
+
+}
+
+.comment-history {
+
+  min-height: 150px;
+  max-height: 150px;
+  overflow-y :scroll;
+}
+
+.close {
+  color: red;
+  float: right;
+  cursor: hand; cursor: pointer;
+
+}
+
+.minimize {
+    font-size: 50px;
+    font-style: bold;
+    color: gray;
+    cursor: hand; cursor: pointer;
+    float: right;
+}
+.maximize {
+    font-size: 30px;
+    font-style: bold;
+    color: gray;
+    cursor: hand; cursor: pointer;
+    float: right;
+}
+
+.comment .customer {
+    color: darkgreen;
+    font-style: italic;
+}
+
+.comment .artisan {
+    color: maroon;
+    font-style: italic;
+}
+
+.comment-thread-header {
+  font-weight: bold;
+}
+</style>
