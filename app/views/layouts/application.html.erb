@@ -106,19 +106,33 @@
       var $this   = $(this);
       var $others = $this.siblings();
       
-      // $others.removeClass("open");
-      // $this.addClass("open");
+      if ($this.hasClass("open")) {
+        $this.removeClass("open");
+        $this.find("ul").slideUp();
+        $this.removeClass("active");
+
+        return;
+      }
+
 
       $.each($others, function(i, el) {
         var $el = $(el);
+        $el.removeClass("active");
+
         if ($el.hasClass("open")) {
           $el.find("ul").slideUp();
-          $el.remoevClass("open");
+          $el.removeClass("open");
         }
       });
 
+      console.log("--")
+      console.log($this);
       $this.addClass("open");
+      $this.addClass("active");
+      console.log($this.find("ul"));
       $this.find("ul").slideDown();
+      console.log();
+      // $this.find("ul").slideDown();
     });
 
         // link: function (scope, ele) {

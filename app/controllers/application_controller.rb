@@ -5,4 +5,23 @@ class ApplicationController < ActionController::Base
 
   def index
   end
+
+
+  def tasks
+    render 'static/tasks'
+  end
+
+
+  def inbox
+    render 'static/inbox'
+  end
+
+  def compose
+    render 'static/compose'
+  end
+
+  def read
+    render 'static/single_mail'
+  end
+
 end

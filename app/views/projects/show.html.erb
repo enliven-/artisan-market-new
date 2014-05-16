@@ -1,69 +1,55 @@
-
+<p id="notice">
+  <%= notice %>
+</p>
 <div class="col-md-12">
   <div class="panel panel-default">
-    <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span>Project X</strong></div>
+    <div class="panel-heading">
+      <strong><span class="glyphicon glyphicon-th"></span><%= @project.label %></strong>
+    </div>
     <div class="panel-body">
-
-      <table class="project table table-bordered table-striped table-hover">
+      <table class="_project table table-bordered table-striped table-hover">
         <tr>
-          <td>Project Description:</td> <td>asdfsadf</td>
+          <td>Project Description:</td>
+          <td><%= @project.description %></td>
         </tr>
         <tr>
-          <td>Owner Artisan</td> <td>viksit@mit.edu    </tr>
-          <tr>
-            <td>Created At:</td> <td>2014-03-12 16:23:00 UTC</td>
-          </tr>
-          <tr>
-            <td>Last Updated At:</td> <td>2014-03-12 16:23:00 UTC    </tr>
-          </table>
-      </div>
+          <td>Product Category:</td>
+          <td><%= @project.product_category.label %></td>
+        </tr>
+        <tr>
+          <td>Owner Artisan</td>
+          <td><%= @project.artisan.email %></td>
+        </tr>
+        <tr>
+          <td>Customer:</td>
+          <td><%= @project.customer_id ? @project.customer.email : 'None' %></td>
+        </tr>
+        <tr>
+          <td>Parent Project</td>
+          <td><%= @project.artisan.email %></td>
+        </tr>
+        <tr>
+          <td>Public? :</td>
+          <td><%= @project.show_in_catalog ? 'Yes' : 'No' %></td>
+        </tr>
+        <tr>
+          <td>Design Versions Count:</td>
+          <td><%= @project.design_versions_count %></td>
+        </tr>
+        <tr>
+          <td>Created At:</td>
+          <td><%= @project.created_at %></td>
+        </tr>
+        <tr>
+          <td>Last Updated At:</td>
+          <td><%= @project.updated_at %></td>
+        </tr>
+      </table>
+      
+      <%=link_to 'Edit', edit_project_path(@project) %>|
+      <%=link_to 'Back', projects_path %>
+    
     </div>
   </div>
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Label:</strong>
-  <%= @project.label %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
-
-<p>
-  <strong>Artisan:</strong>
-  <%= @project.artisan_id %>
-</p>
-
-<p>
-  <strong>Design versions count:</strong>
-  <%= @project.design_versions_count %>
-</p>
-
-<p>
-  <strong>Parent project:</strong>
-  <%= @project.parent_project_id %>
-</p>
-
-<p>
-  <strong>Show in catalog:</strong>
-  <%= @project.show_in_catalog %>
-</p>
-
-<p>
-  <strong>Product category:</strong>
-  <%= @project.product_category_id %>
-</p>
-
-<p>
-  <strong>Customer:</strong>
-  <%= @project.customer_id %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
-
-
-
+</div>
+<!-- d.strftime("Printed on %m/%d/%Y") -->

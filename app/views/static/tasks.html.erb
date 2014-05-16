@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-md-12">
+    <section class="task-container ng-scope" data-ng-controller="taskCtrl">
+      <form data-ng-submit="add()" class="add-task ng-pristine ng-valid">
+        <input placeholder="What needs to be done?" class="form-control ng-pristine ng-valid" data-ng-model="newTask" autofocus="" type="text">
+        <a type="submit" class="submit-button" data-ng-click="add()"> <span class="glyphicon glyphicon-plus"></span>
+        </a>
+      </form>
+      <section>
+        <ul class="filters list-inline nav nav-tabs">
+          <li class="active" data-ng-class="{active: statusFilter == ''}"> <a href="" data-toggle="tab" data-ng-click="filter('all')">All</a>
+          </li>
+          <li class="" data-ng-class="{active: statusFilter.completed == false }"> <a href="" data-toggle="tab" data-ng-click="filter('active')">Active</a>
+          </li>
+          <li class="" data-ng-class="{active: statusFilter.completed == true }"> <a href="" data-toggle="tab" data-ng-click="filter('completed')">Completed</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <ul class="task-list list-unstyled">
+          <!-- ngRepeat: task in tasks | filter:statusFilter track by $index -->
+          <li class="ng-scope completed" data-ng-repeat="task in tasks | filter:statusFilter track by $index" data-ng-class="{completed: task.completed, editing: task == editedTask}"> <span class="view">
+                                <input class="toggle-task ng-pristine ng-valid" data-ng-model="task.completed" data-ng-change="completed(task)" type="checkbox">
+                                <label class="ng-binding" data-ng-dblclick="edit(task)">Finish homework</label>
+                                <span class="glyphicon glyphicon-pencil" data-ng-click="edit(task)"></span>
+            <span class="glyphicon glyphicon-remove" data-ng-click="remove(task, $index)"></span>
+            </span>
+            <form class="ng-pristine ng-valid" data-ng-submit="doneEditing(task, $index)">
+              <input class="edit form-control ng-pristine ng-valid" data-ng-trim="false" data-ng-model="task.title" data-ng-blur="doneEditing(task, $index)" data-task-focus="task == editedTask" type="text">
+            </form>
+          </li>
+          <!-- end ngRepeat: task in tasks | filter:statusFilter track by $index -->
+          <li class="ng-scope completed" data-ng-repeat="task in tasks | filter:statusFilter track by $index" data-ng-class="{completed: task.completed, editing: task == editedTask}"> <span class="view">
+                                <input class="toggle-task ng-pristine ng-valid" data-ng-model="task.completed" data-ng-change="completed(task)" type="checkbox">
+                                <label class="ng-binding" data-ng-dblclick="edit(task)">Make a call</label>
+                                <span class="glyphicon glyphicon-pencil" data-ng-click="edit(task)"></span>
+            <span class="glyphicon glyphicon-remove" data-ng-click="remove(task, $index)"></span>
+            </span>
+            <form class="ng-pristine ng-valid" data-ng-submit="doneEditing(task, $index)">
+              <input class="edit form-control ng-pristine ng-valid" data-ng-trim="false" data-ng-model="task.title" data-ng-blur="doneEditing(task, $index)" data-task-focus="task == editedTask" type="text">
+            </form>
+          </li>
+          <!-- end ngRepeat: task in tasks | filter:statusFilter track by $index -->
+          <li class="ng-scope" data-ng-repeat="task in tasks | filter:statusFilter track by $index" data-ng-class="{completed: task.completed, editing: task == editedTask}"> <span class="view">
+                                <input class="toggle-task ng-pristine ng-valid" data-ng-model="task.completed" data-ng-change="completed(task)" type="checkbox">
+                                <label class="ng-binding" data-ng-dblclick="edit(task)">Play games with friends</label>
+                                <span class="glyphicon glyphicon-pencil" data-ng-click="edit(task)"></span>
+            <span class="glyphicon glyphicon-remove" data-ng-click="remove(task, $index)"></span>
+            </span>
+            <form class="ng-pristine ng-valid" data-ng-submit="doneEditing(task, $index)">
+              <input class="edit form-control ng-pristine ng-valid" data-ng-trim="false" data-ng-model="task.title" data-ng-blur="doneEditing(task, $index)" data-task-focus="task == editedTask" type="text">
+            </form>
+          </li>
+          <!-- end ngRepeat: task in tasks | filter:statusFilter track by $index -->
+          <li class="ng-scope" data-ng-repeat="task in tasks | filter:statusFilter track by $index" data-ng-class="{completed: task.completed, editing: task == editedTask}"> <span class="view">
+                                <input class="toggle-task ng-pristine ng-valid" data-ng-model="task.completed" data-ng-change="completed(task)" type="checkbox">
+                                <label class="ng-binding" data-ng-dblclick="edit(task)">Shopping</label>
+                                <span class="glyphicon glyphicon-pencil" data-ng-click="edit(task)"></span>
+            <span class="glyphicon glyphicon-remove" data-ng-click="remove(task, $index)"></span>
+            </span>
+            <form class="ng-pristine ng-valid" data-ng-submit="doneEditing(task, $index)">
+              <input class="edit form-control ng-pristine ng-valid" data-ng-trim="false" data-ng-model="task.title" data-ng-blur="doneEditing(task, $index)" data-task-focus="task == editedTask" type="text">
+            </form>
+          </li>
+          <!-- end ngRepeat: task in tasks | filter:statusFilter track by $index -->
+        </ul>
+      </section>
+      <footer class="task-footer">
+        <ul class="list-inline clearfix">
+          <li class="first-item">
+            <input class="ng-pristine ng-valid" id="toggle-all" data-ng-model="allChecked" data-ng-change="markAll(allChecked)" type="checkbox">
+            <label for="toggle-all">Mark all as done</label>
+          </li>
+          <li class="text-center"> <span>
+                                <strong class="ng-binding">2</strong>
+                                <span class="text-muted" data-ng-pluralize="" count="remainingCount" when="{one: 'item left', other: 'items left'}">items left</span>
+            </span>
+          </li>
+          <li class="text-right"> <span class="clear-completed ng-binding" data-ng-click="clearCompleted()" data-ng-show="remainingCount < tasks.length">Clear completed (2)</span> 
+          </li>
+        </ul>
+      </footer>
+    </section>
+  </div>
+</div>
+<div class="callout callout-info">
+  <p>Tips:</p>
+  <p>- Double click the task (or click the edit icon on the right of the task) to edit, then click anywhere else done editing.</p>
+  <p>- Type a something needs to done, then press "return" key (or the plus icon on the left) to add a new task</p>
+  <p>- Click the remove icon on the right of the task to remove</p>
+</div>

@@ -27,6 +27,12 @@ ArtisanMarket::Application.routes.draw do
 
   resources :product_categories
 
+  get '/tasks/',       to: 'application#tasks'   
+  get '/mail/inbox',   to: 'application#inbox'
+  get '/mail/compose', to: 'application#compose'
+  get '/mail/read',    to: 'application#read'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
